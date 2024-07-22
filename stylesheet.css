@@ -1,0 +1,130 @@
+@font-face {
+    font-family: "OT Neue Montreal Condensed";
+    src: url(./fonts/OTNeueMontreal-BookExtraSqueezed.otf);
+}
+
+:root {
+    font-family: "OT Neue Montreal Condensed", Helvetica, Arial;
+    font-size: 32px;
+    --hover-color: #f0f0f0;
+    --cover-blue: #2f2757;
+    --cover-blue-text: #e3d72d;
+}
+
+body {
+    height: 100vh;
+    width: 100vw;
+    margin: 0;
+    overflow: hidden;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 75px;
+}
+
+.logo {
+    display: flex;
+    gap: 2px;
+    justify-content: center;
+    align-items: center;
+    padding-right: 75px;
+}
+
+.logo>div:nth-child(2) {
+    font-size: 50px;
+}
+
+.scrolling-text {
+    margin: 0 auto;
+    white-space: nowrap;
+    overflow: hidden;
+    position: absolute;
+    top: 70px;
+    font-size: 45px;
+}
+
+.marquee span {
+    display: inline-block;
+    padding-left: 100%;
+    animation: marquee 20s linear infinite;
+}
+
+.marquee-delay span {
+    animation-delay: 10s;
+}
+
+@keyframes marquee {
+    0% {
+        transform: translate(0, 0);
+    }
+    100% {
+        transform: translate(-100%, 0);
+    }
+}
+
+.main {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    height: 100%;
+    border: 1px solid black;
+}
+
+.card-container {
+    border-bottom: 1px solid black;
+    border-right: 1px solid black;
+    perspective: 2000px;
+}
+
+.card-container:hover {
+    background-color: var(--hover-color);
+}
+
+.card-inner {
+    position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+
+.card-container:hover .card-inner {
+    transform: rotateY(180deg);
+}
+
+.card-front, .card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+  }
+
+.card-back {
+    transform: rotateY(180deg);
+}
+
+.book-cover {
+    -webkit-box-shadow: inset 0px 0px 27px -6px rgba(0,0,0,0.91);
+-moz-box-shadow: inset 0px 0px 27px -6px rgba(0,0,0,0.91);
+box-shadow: inset 0px 0px 27px -6px rgba(0,0,0,0.91);
+height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 30px;
+    align-items: center;
+}
+
+.title {
+    font-size: 45px;
+}
+
+.blue {
+    background-color: var(--cover-blue);
+    color: var(--cover-blue-text);
+}
