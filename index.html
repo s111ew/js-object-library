@@ -5,17 +5,47 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="stylesheet.css" />
     <script src="script.js" defer></script>
+    <script>
+      function updateDateTime() {
+          const dateElement = document.querySelector('.date');
+          const now = new Date();
+
+          const daysOfWeek = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+          const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+
+          const dayName = daysOfWeek[now.getDay()];
+          const day = String(now.getDate()).padStart(2, '0');
+          const month = months[now.getMonth()];
+
+          const hours = String(now.getHours()).padStart(2, '0');
+          const minutes = String(now.getMinutes()).padStart(2, '0');
+          const seconds = String(now.getSeconds()).padStart(2, '0');
+
+          const options = { timeZoneName: 'short' };
+          const timeZone = new Intl.DateTimeFormat('en-US', options).formatToParts(now).find(part => part.type === 'timeZoneName').value;
+
+          const formattedDate = `${dayName} ${day} ${month}, ${hours}:${minutes}:${seconds} ${timeZone}`;
+          
+          dateElement.textContent = formattedDate;
+      }
+
+      document.addEventListener('DOMContentLoaded', (event) => {
+          updateDateTime(); // Update immediately on page load
+          setInterval(updateDateTime, 500); // Update every half second
+      });
+  </script>
     <title>Library</title>
   </head>
   <body>
     <div class="header">
-      <div class="date">Mon 22 July, 12:06 GMT</div>
+      <div class="date">Loading...</div>
       <div class="logo">
         <div>the</div>
         <div>Library</div>
       </div>
       <div class="mode">dark mode</div>
     </div>
+    <div class="scrolling-text-background"></div>
     <p class="scrolling-text marquee"
       ><span>
         click the '+' icon and fill in the info in the pop-up to add a new book
@@ -56,41 +86,41 @@
       <div class="card-container"></div>
       <div class="card-container"></div>
     </div>
-    <div class="grey-background not-visible"></div>
-    <div class="pop-up-container not-visible"
-      ><div class="pop-up">
+    <div class="pop-up grey-background not-visible"></div>
+    <div class="pop-up pop-up-container not-visible"
+      ><div class="pop-up-window">
         <form action="#">
           <span class="form-title">New Book</span>
           <div class="input-container">
-            <label for="title">title: </label>
-            <input id="title" type="text" required />
+            <label class="required" for="title">title: </label>
+            <input id="title" type="text" name="title" required />
           </div>
           <div class="input-container">
-            <label for="author">author: </label>
-            <input id="author" type="text" required />
+            <label class="required" for="author">author: </label>
+            <input id="author" type="text" name="author" required />
           </div>
           <div class="input-container">
             <label for="year">year: </label>
-            <input id="year" type="text" />
+            <input id="year" type="text" name="year" />
           </div>
           <div class="input-container">
             <label for="pages">pages: </label>
-            <input id="pages" type="text" />
+            <input id="pages" type="text" name="pages" />
           </div>
           <div class="input-container">
             <label for="genre">genre: </label>
-            <input id="genre" type="text" />
+            <input id="genre" type="text" name="genre" />
           </div>
           <div class="input-container">
-            <label for="read">read: </label>
-            <input id="read" type="checkbox" required />
+            <label class="required" for="read">read: </label>
+            <input id="read" type="checkbox" name="read" required />
           </div>
           <div class="input-container-button">
-            <button>Close</button>
-            <button>Add</button>
+            <button class="button">Close</button>
+            <input class="button" type="submit" value="Submit"/>
           </div>
-        </form>
-      </div></div
-    >
+        </form> </div
+    ></div>
+    <footer><span>Sam Llewellyn 2024</span><span>***</span><a href="https://brutalistwebsites.com/" target="_blank">more brutalist websites</a></footer>
   </body>
 </html>
