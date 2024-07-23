@@ -1,5 +1,5 @@
 function popUpVisible () {
-    const addBookButton = document.querySelector(".add-book-button");
+    const addBookButton = document.querySelector(".add-book");
     addBookButton.addEventListener("click", () => {
         const popUps = document.querySelectorAll(".pop-up");
         popUps.forEach(popUp => {
@@ -37,5 +37,28 @@ function initialiseButtons() {
             closePopUp();
 }});
 }
+
+function removeButtonInitialise(buttonSelector, windowSelector, targetSelector, newDivClass) {
+    const closeButtons = document.querySelectorAll(buttonSelector);
+
+    closeButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const windowDiv = button.closest(windowSelector);
+            if (windowDiv) {
+                windowDiv.remove();
+                const newDiv = document.createElement('div');
+                newDiv.className = newDivClass;
+
+                const targetDiv = document.querySelector(targetSelector);
+                if (targetDiv) {
+                    
+                    targetDiv.parentNode.insertBefore(newDiv, targetDiv.nextSibling);
+            }
+        }
+        });
+    });
+}
+
+removeButtonInitialise(".remove", ".card-container", ".add-book", "card-container");
 
 popUpVisible();

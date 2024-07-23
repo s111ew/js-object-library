@@ -156,11 +156,6 @@ body {
     font-size: 45px;
 }
 
-/* .blue {
-    background-color: var(--cover-blue);
-    color: var(--cover-blue-text);
-} */
-
 .add-book {
     display: flex;
     justify-content: center;
@@ -169,6 +164,7 @@ body {
 
 .add-book:hover {
     background-color: var(--hover-color);
+    cursor: pointer;
 }
 
 .add-book-button {
@@ -176,10 +172,6 @@ body {
     font-weight: 100;
     font-size: 75px;
     color: var(--add-button);
-}
-
-.add-book-button:hover {
-    cursor: pointer;
 }
 
 .blur-background {
