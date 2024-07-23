@@ -257,6 +257,20 @@ input[type=checkbox] {
     margin-top: 20px;
 }
 
+.error {
+    background-color: rgba(255, 0, 0, 0.2);
+    animation: flash 200ms ease-in-out;
+}
+
+@keyframes flash {
+    0% {
+        opacity: 100%;
+    }
+    100% {
+        opacity: 0%;
+    }
+}
+
 .button {
     border: none;
     background-color: black;
