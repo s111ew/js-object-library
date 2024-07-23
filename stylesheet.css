@@ -179,11 +179,11 @@ body {
     cursor: pointer;
 }
 
-.grey-background {
+.blur-background {
     width: 100vw;
     height: 100vh;
-    background-color: #000;
-    opacity: 0.2;
+    background-color: rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(3px);
     position: absolute;
     top: 0;
 }
@@ -203,6 +203,7 @@ body {
     border: 1px solid black;
     background-color: white;
     padding: 25px 50px;
+    margin-top: 25px;
     z-index: 2;
 }
 

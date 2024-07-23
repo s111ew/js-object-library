@@ -7,33 +7,48 @@
     <script src="script.js" defer></script>
     <script>
       function updateDateTime() {
-          const dateElement = document.querySelector('.date');
-          const now = new Date();
+        const dateElement = document.querySelector(".date");
+        const now = new Date();
 
-          const daysOfWeek = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
-          const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+        const daysOfWeek = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+        const months = [
+          "January",
+          "February",
+          "March",
+          "April",
+          "May",
+          "June",
+          "July",
+          "August",
+          "September",
+          "October",
+          "November",
+          "December",
+        ];
 
-          const dayName = daysOfWeek[now.getDay()];
-          const day = String(now.getDate()).padStart(2, '0');
-          const month = months[now.getMonth()];
+        const dayName = daysOfWeek[now.getDay()];
+        const day = String(now.getDate()).padStart(2, "0");
+        const month = months[now.getMonth()];
 
-          const hours = String(now.getHours()).padStart(2, '0');
-          const minutes = String(now.getMinutes()).padStart(2, '0');
-          const seconds = String(now.getSeconds()).padStart(2, '0');
+        const hours = String(now.getHours()).padStart(2, "0");
+        const minutes = String(now.getMinutes()).padStart(2, "0");
+        const seconds = String(now.getSeconds()).padStart(2, "0");
 
-          const options = { timeZoneName: 'short' };
-          const timeZone = new Intl.DateTimeFormat('en-US', options).formatToParts(now).find(part => part.type === 'timeZoneName').value;
+        const options = { timeZoneName: "short" };
+        const timeZone = new Intl.DateTimeFormat("en-US", options)
+          .formatToParts(now)
+          .find((part) => part.type === "timeZoneName").value;
 
-          const formattedDate = `${dayName} ${day} ${month}, ${hours}:${minutes}:${seconds} ${timeZone}`;
-          
-          dateElement.textContent = formattedDate;
+        const formattedDate = `${dayName} ${day} ${month}, ${hours}:${minutes}:${seconds} ${timeZone}`;
+
+        dateElement.textContent = formattedDate;
       }
 
-      document.addEventListener('DOMContentLoaded', (event) => {
-          updateDateTime(); // Update immediately on page load
-          setInterval(updateDateTime, 500); // Update every half second
+      document.addEventListener("DOMContentLoaded", (event) => {
+        updateDateTime(); // Update immediately on page load
+        setInterval(updateDateTime, 500); // Update every half second
       });
-  </script>
+    </script>
     <title>Library</title>
   </head>
   <body>
@@ -86,9 +101,9 @@
       <div class="card-container"></div>
       <div class="card-container"></div>
     </div>
-    <div class="pop-up grey-background not-visible"></div>
+    <div class="pop-up blur-background not-visible"></div>
     <div class="pop-up pop-up-container not-visible"
-      ><div class="pop-up-window">
+      ><div class="pop-up pop-up-window">
         <form action="#">
           <span class="form-title">New Book</span>
           <div class="input-container">
@@ -116,11 +131,16 @@
             <input id="read" type="checkbox" name="read" required />
           </div>
           <div class="input-container-button">
-            <button class="button">Close</button>
-            <input class="button" type="submit" value="Submit"/>
+            <button class="button close-button">Close</button>
+            <input class="button submit-button" type="submit" value="Submit" />
           </div>
         </form> </div
     ></div>
-    <footer><span>Sam Llewellyn 2024</span><span>***</span><a href="https://brutalistwebsites.com/" target="_blank">more brutalist websites</a></footer>
+    <footer
+      ><span>Sam Llewellyn 2024</span><span>***</span
+      ><a href="https://brutalistwebsites.com/" target="_blank"
+        >more brutalist websites</a
+      ></footer
+    >
   </body>
 </html>
