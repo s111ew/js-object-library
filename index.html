@@ -116,19 +116,43 @@
           </div>
           <div class="input-container">
             <label for="year">year: </label>
-            <input id="year" type="text" name="year" />
+            <input
+              id="year"
+              type="number"
+              name="year"
+              maxlength="4"
+              inputmode="numeric"
+            />
           </div>
           <div class="input-container">
             <label for="pages">pages: </label>
-            <input id="pages" type="text" name="pages" />
+            <input
+              id="pages"
+              type="number"
+              name="pages"
+              maxlength="5"
+              inputmode="numeric"
+            />
           </div>
           <div class="input-container">
-            <label for="genre">genre: </label>
-            <input id="genre" type="text" name="genre" />
+            <label for="genre" class="required">genre: </label>
+            <select name="genre" id="genre" required>
+              <option value="" selected>Select</option>
+              <option value="romance">Romance</option>
+              <option value="sci-fi">Sci-fi</option>
+              <option value="fantasy">Fantasy</option>
+              <option value="thriller">Thriller</option>
+              <option value="horror">Horror</option>
+              <option value="biography">Biography</option>
+              <option value="non-fiction">Non-fiction</option>
+              <option value="crime">Crime</option>
+              <option value="self-help">Self Help</option>
+              <option value="childers">Childrens</option>
+            </select>
           </div>
           <div class="input-container">
             <label class="required" for="read">read: </label>
-            <input id="read" type="checkbox" name="read" required />
+            <input id="read" type="checkbox" name="read" checked required />
           </div>
           <div class="input-container-button">
             <button class="button close-button">Close</button>
