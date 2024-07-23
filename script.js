@@ -1,4 +1,4 @@
-function popUpVisible () {
+function popUpVisible() {
     const addBookButton = document.querySelector(".add-book");
     addBookButton.addEventListener("click", () => {
         const popUps = document.querySelectorAll(".pop-up");
@@ -36,6 +36,8 @@ function initialiseButtons() {
         if (!event.target.closest('.pop-up-window')) {
             closePopUp();
 }});
+const submitButton = document.querySelector(".submit-button");
+submitButton.addEventListener("click", addBook)
 }
 
 function removeButtonInitialise(buttonSelector, windowSelector, targetSelector, newDivClass) {

@@ -82,7 +82,7 @@
             <span class="title">No Country for Old Men</span>
             <span class="author">Cormac McCarthy</span>
           </div>
-          <div class="card-back book-cover blue">
+          <div class="card-back book-cover">
             <span class="remove">x</span>
             <span class="genre">genre: Thriller</span>
             <span class="year">year: 2005</span>
@@ -91,10 +91,24 @@
           </div>
         </div>
       </div>
+      <div class="card-container">
+        <div class="card-inner">
+          <div class="card-front book-cover">
+            <span class="title">Kiss Me, Judas</span>
+            <span class="author">Christopher Baer</span>
+          </div>
+          <div class="card-back book-cover">
+            <span class="remove">x</span>
+            <span class="genre">genre: Crime</span>
+            <span class="year">year: 1998</span>
+            <span class="pages">pages: 316</span>
+            <span class="read">read: Yes</span>
+          </div>
+        </div>
+      </div>
       <div class="card-container add-book">
         <span class="add-book-button">+</span></div
       >
-      <div class="card-container"></div>
       <div class="card-container"></div>
       <div class="card-container"></div>
       <div class="card-container"></div>
@@ -108,15 +122,28 @@
           <span class="form-title">New Book</span>
           <div class="input-container">
             <label class="required" for="title">title: </label>
-            <input id="title" type="text" name="title" required />
+            <input
+              class="input-field"
+              id="title"
+              type="text"
+              name="title"
+              required
+            />
           </div>
           <div class="input-container">
             <label class="required" for="author">author: </label>
-            <input id="author" type="text" name="author" required />
+            <input
+              id="author"
+              class="input-field"
+              type="text"
+              name="author"
+              required
+            />
           </div>
           <div class="input-container">
             <label for="year">year: </label>
             <input
+              class="input-field"
               id="year"
               type="number"
               name="year"
@@ -127,6 +154,7 @@
           <div class="input-container">
             <label for="pages">pages: </label>
             <input
+              class="input-field"
               id="pages"
               type="number"
               name="pages"
@@ -136,7 +164,7 @@
           </div>
           <div class="input-container">
             <label for="genre" class="required">genre: </label>
-            <select name="genre" id="genre" required>
+            <select class="input-field" name="genre" id="genre" required>
               <option value="" selected>Select</option>
               <option value="romance">Romance</option>
               <option value="sci-fi">Sci-fi</option>
@@ -151,7 +179,9 @@
             </select>
           </div>
           <div class="input-container">
-            <label class="required" for="read">read: </label>
+            <label class="input-field" class="required" for="read"
+              >read:
+            </label>
             <input id="read" type="checkbox" name="read" checked required />
           </div>
           <div class="input-container-button">

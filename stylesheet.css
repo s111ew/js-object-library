@@ -9,8 +9,8 @@
     font-size: 32px;
     --hover-color: #f5f5f5;
     --add-button: #dbdbdb;
-    --cover-background: #dbdbdb;
-    --cover-blue: #2f2757;
+    --front-cover-background: #dbdbdb;
+    --back-cover-background: #b8b8b8;
     --cover-blue-text: #e3d72d;
     --box-shadow: rgba(255, 255, 255, 0.91);
     --scrolling-text-background-color: #1500cf;
@@ -107,7 +107,7 @@ body {
   text-align: center;
   transition: transform 0.8s;
   transform-style: preserve-3d;
-  background-color: var(--cover-background);
+  background-color: var(--front-cover-background);
 }
 
 .card-container:hover .card-inner {
@@ -124,6 +124,7 @@ body {
 
 .card-back {
     transform: rotateY(180deg);
+    background-color: var(--back-cover-background);
 }
 
 .book-cover {
