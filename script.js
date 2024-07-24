@@ -1,4 +1,4 @@
-function popUpVisible() {
+function addPopUpEventListeners() {
     const addBookButton = document.querySelector(".add-book");
     addBookButton.addEventListener("click", () => {
         const popUps = document.querySelectorAll(".pop-up");
@@ -6,10 +6,10 @@ function popUpVisible() {
             popUp.classList.remove("not-visible");
         });
     });
-    initialiseButtons();
+    addButtonEventListeners();
 }
 
-function initialiseButtons() {
+function addButtonEventListeners() {
     const buttons = document.querySelectorAll(".button");
     buttons.forEach(button => {
         button.addEventListener("click", event => {
@@ -35,31 +35,16 @@ function initialiseButtons() {
     background.addEventListener("click", (event) => {
         if (!event.target.closest('.pop-up-window')) {
             closePopUp();
-}});
-const submitButton = document.querySelector(".submit-button");
-submitButton.addEventListener("click", addBooktoLibrary)
+    }});
+
+    const submitButton = document.querySelector(".submit-button");
+    submitButton.addEventListener("click", addBooktoLibrary)
 }
 
-function removeButtonInitialise(buttonSelector, windowSelector, targetSelector, newDivClass) {
-    const closeButtons = document.querySelectorAll(buttonSelector);
-
-    closeButtons.forEach(button => {
-        button.addEventListener('click', function() {
-            const windowDiv = button.closest(windowSelector);
-            if (windowDiv) {
-                windowDiv.remove();
-                const newDiv = document.createElement('div');
-                newDiv.className = newDivClass;
-
-                const targetDiv = document.querySelector(targetSelector);
-                if (targetDiv) {
-                    
-                    targetDiv.parentNode.insertBefore(newDiv, targetDiv.nextSibling);
-            }
-        }
-        });
-    });
-}
+// function addRemoveButtonEventListeners() {
+//     let removeButtons = document.querySelectorAll(".remove");
+//     removeButtons.forEach(removeButton => )
+// }
 
 let library = []
 
@@ -95,6 +80,7 @@ function addBooktoLibrary() {
         let bookToAdd = new Book(title, author, genre, year, pages, read);
         library.push(bookToAdd);
         closePopUp();
+        renderLibrary();
         }
 }
 
@@ -105,6 +91,10 @@ function addExampleBooksToLibrary () {
 }
 
 function renderLibrary () {
+
+    let main = document.querySelector(".main");
+    main.innerHTML = "";
+
     // loop through array to create card element for each book
 
     for (book of library) {
@@ -180,7 +170,6 @@ function renderLibrary () {
     addBook.textContent = "+";
     addBookContainer.appendChild(addBook);
     
-    let main = document.querySelector(".main");
     main.appendChild(addBookContainer);
 
     // create (7 - array.length) empty cards
@@ -192,8 +181,8 @@ function renderLibrary () {
     }
 
     // reattach event listeners
-    removeButtonInitialise();
-    popUpVisible();
+    addRemoveButtonEventListeners();
+    addPopUpEventListeners();
 }
 
 addExampleBooksToLibrary();
