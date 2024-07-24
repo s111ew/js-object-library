@@ -41,10 +41,17 @@ function addButtonEventListeners() {
     submitButton.addEventListener("click", addBooktoLibrary)
 }
 
-// function addRemoveButtonEventListeners() {
-//     let removeButtons = document.querySelectorAll(".remove");
-//     removeButtons.forEach(removeButton => )
-// }
+function addRemoveButtonEventListeners() {
+    let removeButtons = document.querySelectorAll(".remove");
+    
+    removeButtons.forEach((button, index) => {
+        button.addEventListener('click', function () {
+            library.splice(index, 1);
+            renderLibrary();
+        });
+    });
+
+}
 
 let library = []
 
