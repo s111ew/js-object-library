@@ -172,14 +172,11 @@ function renderLibrary () {
     let addBookContainer = document.createElement("div");
     addBookContainer.classList.add("card-container", "add-book");
 
-    let addBook = document.createElement("span");
+    if (library.length < 8) {let addBook = document.createElement("span");
     addBook.classList.add("add-book-button");
     addBook.textContent = "+";
     addBookContainer.appendChild(addBook);
-    
-    main.appendChild(addBookContainer);
-
-    // create (7 - array.length) empty cards
+    main.appendChild(addBookContainer);}
 
     for (let i = 0; i < (7 - library.length); i++) {
         let cardContainerEmpty = document.createElement("div");
@@ -187,7 +184,6 @@ function renderLibrary () {
         main.appendChild(cardContainerEmpty)
     }
 
-    // reattach event listeners
     addRemoveButtonEventListeners();
     addPopUpEventListeners();
 }
