@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="stylesheet.css" />
     <script src="script.js" defer></script>
-    <script>
+    <script defer>
       function updateDateTime() {
         const dateElement = document.querySelector(".date");
         const now = new Date();
@@ -59,6 +59,13 @@
             modeToggle.textContent = "dark mode";
           }
         });
+      });
+
+      const marquees = document.querySelectorAll(".marquee");
+      marquees.forEach((marquee) => {
+        marquee.style.display = "none";
+        marquee.offsetHeight; // Trigger a reflow
+        marquee.style.display = "";
       });
     </script>
     <title>Library</title>
