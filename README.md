@@ -1,6 +1,6 @@
 # A SIMPLE BOOK DIARY WEBAPP
 
-As part of [The Odin Project](https://www.theodinproject.com/) curriculum, I created a simple book diary/library webapp using JS objects and arrays.
+As part of [The Odin Project](https://www.theodinproject.com/) curriculum, I created a simple book diary/library webapp using JS objects and arrays - live preview [here](https://s111ew.github.io/js-object-library/).
 
 I was able to successfully implement an object constructor that handles user input and creates a 'Book' object which is then passed to an array - this array is then looped over to create the book library.
 
