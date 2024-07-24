@@ -9,6 +9,24 @@ function addPopUpEventListeners() {
     addButtonEventListeners();
 }
 
+function closePopUp() {
+    const popUps = document.querySelectorAll(".pop-up");
+    popUps.forEach(popUp => {
+        popUp.classList.add("not-visible");
+    });
+    const inputs = document.querySelectorAll("input:not(.button, #read)");
+    inputs.forEach(input => {
+        input.value = "";
+    });
+
+    const select = document.querySelector("#genre");
+    select.selectedIndex = 0;
+
+    const checkbox = document.querySelector("#read");
+    checkbox.checked = "true";
+    checkbox.value = "on";
+}
+
 function addButtonEventListeners() {
     const buttons = document.querySelectorAll(".button");
     buttons.forEach(button => {
@@ -16,24 +34,6 @@ function addButtonEventListeners() {
             event.preventDefault();
         });
     });
-
-    function closePopUp() {
-        const popUps = document.querySelectorAll(".pop-up");
-        popUps.forEach(popUp => {
-            popUp.classList.add("not-visible");
-        });
-        const inputs = document.querySelectorAll("input:not(.button, #read)");
-        inputs.forEach(input => {
-            input.value = "";
-        });
-
-        const select = document.querySelector("#genre");
-        select.selectedIndex = 0;
-
-        const checkbox = document.querySelector("#read");
-        checkbox.checked = "true";
-        checkbox.value = "on";
-    }
 
     const closeButton = document.querySelector(".close-button");
     closeButton.addEventListener("click", closePopUp);
@@ -60,8 +60,6 @@ function addRemoveButtonEventListeners() {
 
 }
 
-let library = []
-
 function Book(title, author, genre, year, pages, read) {
     this.title = title;
     this.author = author;
@@ -72,23 +70,13 @@ function Book(title, author, genre, year, pages, read) {
 }
 
 function addBooktoLibrary() {
-    const title = document.querySelector("#title").value;
-    const author = document.querySelector("#author").value;
-    const genre = document.querySelector("#genre").value;
-    const year = document.querySelector("#year").value;
-    const pages = document.querySelector("#pages").value;
-    const read = document.querySelector("#read").value;
-
-    function closePopUp() {
-        const popUps = document.querySelectorAll(".pop-up");
-        popUps.forEach(popUp => {
-            popUp.classList.add("not-visible");
-        });
-        const inputs = document.querySelectorAll("input:not(.button)");
-        inputs.forEach(input => {
-            input.value = "";
-        });
-    }
+    let title = document.querySelector("#title").value;
+    let author = document.querySelector("#author").value;
+    let genre = document.querySelector("#genre").value;
+    genre = genre.charAt(0).toUpperCase() + genre.slice(1);
+    let year = document.querySelector("#year").value;
+    let pages = document.querySelector("#pages").value;
+    let read = document.querySelector("#read").value;
 
     if (title !== "" && author !== "" && genre !== "") {
         let bookToAdd = new Book(title, author, genre, year, pages, read);
@@ -106,7 +94,7 @@ function addBooktoLibrary() {
 
 function addExampleBooksToLibrary () {
     const exampleBook1 = new Book("No Country for Old Men", "Cormac McCarthy", "Thriller", "2005", "320", "on");
-    const exampleBook2 = new Book("Kiss Me, Judas", "Christopher Baer", "Crime", "1998", "316", "on");
+    const exampleBook2 = new Book("Pride and Prejudice", "Jane Austen", "Romance", "1813", "304", "on");
     library.push(exampleBook1, exampleBook2);
 }
 
@@ -114,8 +102,6 @@ function renderLibrary () {
 
     let main = document.querySelector(".main");
     main.innerHTML = "";
-
-    // loop through array to create card element for each book
 
     for (book of library) {
         let cardContainer = document.createElement("div");
@@ -180,8 +166,6 @@ function renderLibrary () {
         main.appendChild(cardContainer);
     }
 
-    // create "add-book" card
-
     let addBookContainer = document.createElement("div");
     addBookContainer.classList.add("card-container", "add-book");
 
@@ -200,6 +184,8 @@ function renderLibrary () {
     addRemoveButtonEventListeners();
     addPopUpEventListeners();
 }
+
+let library = []
 
 addExampleBooksToLibrary();
 
