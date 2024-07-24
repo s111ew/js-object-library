@@ -128,9 +128,6 @@ body {
 }
 
 .book-cover {
-    /* -webkit-box-shadow: inset 0px 0px 20px -6px var(--box-shadow);
-    -moz-box-shadow: inset 0px 0px 20px -6px var(--box-shadow);
-    box-shadow: inset 0px 0px 20px -6px var(--box-shadow); */
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -318,4 +315,87 @@ footer {
     footer {
         border-top: 1px solid black;
     }
+}
+
+.mode {
+    -webkit-user-select: none; 
+        -ms-user-select: none;
+            user-select: none;
+}
+
+.mode:hover {
+    cursor: pointer;
+}
+
+/* Dark Mode Styles */
+body.dark-mode {
+    background-color: #121212;
+    color: #e0e0e0;
+}
+
+body.dark-mode .header,
+body.dark-mode .footer {
+    background-color: #121212;
+}
+
+body.dark-mode .pop-up-window {
+    background-color: #2e2e2e;
+    color: #e0e0e0;
+}
+
+body.dark-mode .pop-up-window {
+    border: 1px solid #fff;
+}
+
+body.dark-mode input:not(.button),
+body.dark-mode select {
+    background-color: #2e2e2e;
+    border-bottom: 1px solid #fff;
+}
+
+body.dark-mode select {
+    color: #b8b8b8;
+}
+
+body.dark-mode #read {
+    accent-color: #2feb3b;
+}
+
+body.dark-mode blur-background {
+    background-color: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(3px);
+}
+
+body.dark-mode .scrolling-text-background {
+    background-color: #2feb3b;
+}
+
+body.dark-mode .scrolling-text {
+    color: #000;
+    -webkit-user-select: none; 
+        -ms-user-select: none;
+            user-select: none;
+}
+
+body.dark-mode .card-container {
+    border-color: #333;
+}
+
+body.dark-mode .card-front {
+    background-color: #1e1e1e;
+    color: #e0e0e0;
+}
+
+body.dark-mode .card-back {
+    background-color: #161616;
+    color: #e0e0e0;
+}
+
+body.dark-mode .add-book:hover {
+    background-color: #161616;
+    color: #dbdbdb;
+}
+
+body.dark-mode .remove {
+    color: #dbdbdb;
 }

@@ -48,6 +48,18 @@
         updateDateTime();
         setInterval(updateDateTime, 500);
       });
+
+      document.addEventListener("DOMContentLoaded", () => {
+        const modeToggle = document.querySelector(".mode");
+        modeToggle.addEventListener("click", () => {
+          document.body.classList.toggle("dark-mode");
+          if (document.body.classList.contains("dark-mode")) {
+            modeToggle.textContent = "light mode";
+          } else {
+            modeToggle.textContent = "dark mode";
+          }
+        });
+      });
     </script>
     <title>Library</title>
   </head>
