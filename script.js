@@ -61,24 +61,7 @@ function removeButtonInitialise(buttonSelector, windowSelector, targetSelector, 
     });
 }
 
-let library = [
-    {
-        title: "No Country for Old Men",
-        author: "Cormac McCarthy",
-        genre: "Thriller",
-        year: "2005",
-        pages: "320",
-        read: "on"
-    },
-    {
-        title: "Kiss Me, Judas",
-        author: "Christpher Baer",
-        genre: "Crime",
-        year: "1998",
-        pages: "316",
-        read: "on"
-    }
-]
+let library = []
 
 function Book(title, author, genre, year, pages, read) {
     this.title = title;
@@ -115,6 +98,104 @@ function addBooktoLibrary() {
         }
 }
 
-removeButtonInitialise(".remove", ".card-container", ".add-book", "card-container");
+function addExampleBooksToLibrary () {
+    const exampleBook1 = new Book("No Country for Old Men", "Cormac McCarthy", "Thriller", "2005", "320", "on");
+    const exampleBook2 = new Book("Kiss Me, Judas", "Christopher Baer", "Crime", "1998", "316", "on");
+    library.push(exampleBook1, exampleBook2);
+}
 
-popUpVisible();
+function renderLibrary () {
+    // loop through array to create card element for each book
+
+    for (book of library) {
+        let cardContainer = document.createElement("div");
+        cardContainer.classList.add("card-container");
+
+        let cardInner = document.createElement("div");
+        cardInner.classList.add("card-inner");
+        cardContainer.appendChild(cardInner);
+
+        let cardFront = document.createElement("div");
+        cardFront.classList.add("card-front", "book-cover");
+        cardInner.appendChild(cardFront);
+
+        let cardTitle = document.createElement("span");
+        cardTitle.classList.add("title");
+        cardTitle.textContent = `${book.title}`;
+        cardFront.appendChild(cardTitle);
+
+        let cardAuthor = document.createElement("span");
+        cardAuthor.classList.add("author");
+        cardAuthor.textContent = `${book.author}`
+        cardFront.appendChild(cardAuthor);
+
+        let cardBack = document.createElement("div");
+        cardBack.classList.add("card-back", "book-cover");
+        cardInner.appendChild(cardBack);
+
+        let removeButton = document.createElement("span");
+        removeButton.classList.add("remove");
+        removeButton.textContent = "x";
+        cardBack.appendChild(removeButton);
+
+        let cardGenre = document.createElement("span");
+        cardGenre.classList.add("genre");
+        cardGenre.textContent = `genre: ${book.genre}`;
+        cardBack.appendChild(cardGenre);
+        
+        if (book.year !== "") {
+            let cardYear = document.createElement("span");
+            cardYear.classList.add("year");
+            cardYear.textContent = `year: ${book.year}`;
+            cardBack.appendChild(cardYear);
+        }
+
+        if (book.pages !== "") {
+            let cardPages = document.createElement("span");
+            cardPages.classList.add("pages");
+            cardPages.textContent = `pages: ${book.pages}`;
+            cardBack.appendChild(cardPages);
+        }
+
+        let cardRead = document.createElement("span");
+        cardRead.classList.add("read");
+        if (book.read === "on") {
+            cardRead.textContent = `read: Yes`
+        } else {
+            cardRead.textContent = `read: No`
+        }
+        cardBack.appendChild(cardRead);
+
+        let main = document.querySelector(".main");
+        main.appendChild(cardContainer);
+    }
+
+    // create "add-book" card
+
+    let addBookContainer = document.createElement("div");
+    addBookContainer.classList.add("card-container", "add-book");
+
+    let addBook = document.createElement("span");
+    addBook.classList.add("add-book-button");
+    addBook.textContent = "+";
+    addBookContainer.appendChild(addBook);
+    
+    let main = document.querySelector(".main");
+    main.appendChild(addBookContainer);
+
+    // create (7 - array.length) empty cards
+
+    for (let i = 0; i < (7 - library.length); i++) {
+        let cardContainerEmpty = document.createElement("div");
+        cardContainerEmpty.classList.add("card-container");
+        main.appendChild(cardContainerEmpty)
+    }
+
+    // reattach event listeners
+    removeButtonInitialise();
+    popUpVisible();
+}
+
+addExampleBooksToLibrary();
+
+renderLibrary();
