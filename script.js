@@ -22,10 +22,17 @@ function addButtonEventListeners() {
         popUps.forEach(popUp => {
             popUp.classList.add("not-visible");
         });
-        const inputs = document.querySelectorAll("input:not(.button)");
+        const inputs = document.querySelectorAll("input:not(.button, #read)");
         inputs.forEach(input => {
             input.value = "";
         });
+
+        const select = document.querySelector("#genre");
+        select.selectedIndex = 0;
+
+        const checkbox = document.querySelector("#read");
+        checkbox.checked = "true";
+        checkbox.value = "on";
     }
 
     const closeButton = document.querySelector(".close-button");
@@ -88,6 +95,12 @@ function addBooktoLibrary() {
         library.push(bookToAdd);
         closePopUp();
         renderLibrary();
+        } else {
+            let popUpWindow = document.querySelector(".pop-up-window");
+            popUpWindow.classList.add("shake");
+            setTimeout(() => {
+                popUpWindow.classList.remove("shake");
+            }, 201)
         }
 }
 
