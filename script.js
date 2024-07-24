@@ -1,3 +1,11 @@
+function pageReload () {
+    document.addEventListener("DOMContentLoaded", function() {
+    if (!sessionStorage.getItem("pageReloaded")) {
+        sessionStorage.setItem("pageReloaded", "true");
+        location.reload();
+    }
+});}
+
 function addPopUpEventListeners() {
     const addBookButton = document.querySelector(".add-book");
     addBookButton.addEventListener("click", () => {
@@ -183,6 +191,7 @@ function renderLibrary () {
 
     addRemoveButtonEventListeners();
     addPopUpEventListeners();
+    pageReload();
 }
 
 let library = []
