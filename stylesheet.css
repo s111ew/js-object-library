@@ -55,41 +55,27 @@ body {
     background-color: var(--scrolling-text-background-color);
     height: 75px;
     border-top: 1px solid black;
+    display: flex;
+    align-items: center;
+    overflow-x: hidden;
+    position: relative;
 }
 
 .scrolling-text {
-    margin: 0 auto;
+    margin: 0;
     white-space: nowrap;
-    overflow: hidden;
-    position: absolute;
-    top: 107px;
     font-size: 45px;
     color: #fff;
-}
-
-.marquee-start span {
     display: inline-block;
-    animation: marquee 20s linear;
-    padding-right: 100%;
-    animation-fill-mode: forwards;
 }
 
-.marquee span {
-    display: inline-block;
-    padding-left: 100%;
-    animation: marquee 20s linear infinite;
+.scrolling-text-animate {
+    animation: move 20s infinite linear;
 }
 
-.marquee-delay span {
-    animation-delay: 10s;
-}
-
-@keyframes marquee {
-    0% {
-        transform: translate(0, 0);
-    }
-    100% {
-        transform: translate(-100%, 0);
+  @keyframes move {
+    to {
+        transform: translateX(-100%);
     }
 }
 
@@ -98,12 +84,10 @@ body {
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     grid-template-rows: repeat(auto-fit, minmax(300px, 1fr));
     min-height: calc(100vh - 174px);
-    /* border-top: 1px solid black; */
 }
 
 .card-container {
     border: 0.5px solid black;
-    /* border-right: 1px solid black; */
     perspective: 2000px;
 }
 
@@ -161,6 +145,10 @@ body {
     font-size: 45px;
 }
 
+.read:hover {
+    cursor: pointer;
+}
+
 .add-book {
     display: flex;
     justify-content: center;
@@ -180,8 +168,6 @@ body {
 }
 
 .blur-background {
-    width: 100%;
-    height: 100%;
     background-color: rgba(0, 0, 0, 0.2);
     backdrop-filter: blur(3px);
     position: absolute;

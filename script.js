@@ -1,12 +1,8 @@
-function addScrollingText () {
+function addScrollToText () {
     const scrollingTextContainers = document.querySelectorAll(".scrolling-text");
 
     setTimeout(scrollingTextContainers.forEach(container => {
-        const text = document.createElement("span");
-        text.textContent = `click the '+' icon and fill in the info in the pop-up to add a new book
-        to your collection *** hover over your books to view info *** click the
-        'x' to remove a book from your collection ***`;
-        container.appendChild(text);
+        container.classList.add("scrolling-text-animate")
     }), 20)
 }
 
@@ -19,6 +15,27 @@ function addPopUpEventListeners() {
         });
     });
     addButtonEventListeners();
+    popUpResize();
+}
+
+function popUpResize () {
+    const popUpBackground = document.querySelector(".blur-background");
+        popUpBackground.style.width = `${window.innerWidth}px`;
+        popUpBackground.style.height = `${document.documentElement.scrollHeight}px`;
+
+        window.addEventListener('resize', popUpResize);
+}
+
+function addReadToggleEventListeners() {
+    const readButton = document.querySelectorAll(".read");
+    readButton.forEach((readButton, index) => readButton.addEventListener("click", () => {
+        if (library[index].read === "on") {
+            library[index].read = "off"
+        } else {
+            library[index].read = "on"
+        }
+        renderLibrary();
+    }))
 }
 
 function closePopUp() {
@@ -108,6 +125,8 @@ function addExampleBooksToLibrary () {
     const exampleBook1 = new Book("No Country for Old Men", "Cormac McCarthy", "Thriller", "2005", "320", "on");
     const exampleBook2 = new Book("Pride and Prejudice", "Jane Austen", "Romance", "1813", "304", "on");
     library.push(exampleBook1, exampleBook2);
+
+    addScrollToText();
 }
 
 function renderLibrary () {
@@ -194,6 +213,7 @@ function renderLibrary () {
 
     addRemoveButtonEventListeners();
     addPopUpEventListeners();
+    addReadToggleEventListeners();
 }
 
 let library = []
@@ -201,5 +221,3 @@ let library = []
 addExampleBooksToLibrary();
 
 renderLibrary();
-
-addScrollingText();
