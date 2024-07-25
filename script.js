@@ -1,13 +1,13 @@
 function addScrollingText () {
     const scrollingTextContainers = document.querySelectorAll(".scrolling-text");
 
-    scrollingTextContainers.forEach(container => {
+    setTimeout(scrollingTextContainers.forEach(container => {
         const text = document.createElement("span");
         text.textContent = `click the '+' icon and fill in the info in the pop-up to add a new book
         to your collection *** hover over your books to view info *** click the
         'x' to remove a book from your collection ***`;
         container.appendChild(text);
-    })
+    }), 20)
 }
 
 function addPopUpEventListeners() {
