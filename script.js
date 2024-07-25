@@ -1,10 +1,14 @@
-function pageReload () {
-    document.addEventListener("DOMContentLoaded", function() {
-    if (!sessionStorage.getItem("pageReloaded")) {
-        sessionStorage.setItem("pageReloaded", "true");
-        location.reload();
-    }
-});}
+function addScrollingText () {
+    const scrollingTextContainers = document.querySelectorAll(".scrolling-text");
+
+    scrollingTextContainers.forEach(container => {
+        const text = document.createElement("span");
+        text.textContent = `click the '+' icon and fill in the info in the pop-up to add a new book
+        to your collection *** hover over your books to view info *** click the
+        'x' to remove a book from your collection ***`;
+        container.appendChild(text);
+    })
+}
 
 function addPopUpEventListeners() {
     const addBookButton = document.querySelector(".add-book");
@@ -107,7 +111,6 @@ function addExampleBooksToLibrary () {
 }
 
 function renderLibrary () {
-
     let main = document.querySelector(".main");
     main.innerHTML = "";
 
@@ -191,7 +194,6 @@ function renderLibrary () {
 
     addRemoveButtonEventListeners();
     addPopUpEventListeners();
-    pageReload();
 }
 
 let library = []
@@ -199,3 +201,5 @@ let library = []
 addExampleBooksToLibrary();
 
 renderLibrary();
+
+addScrollingText();

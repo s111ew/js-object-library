@@ -60,13 +60,6 @@
           }
         });
       });
-
-      const marquees = document.querySelectorAll(".marquee");
-      marquees.forEach((marquee) => {
-        marquee.style.display = "none";
-        marquee.offsetHeight; // Trigger a reflow
-        marquee.style.display = "";
-      });
     </script>
     <title>Library</title>
   </head>
@@ -80,26 +73,9 @@
       <div class="mode">dark mode</div>
     </div>
     <div class="scrolling-text-background"></div>
-    <p class="scrolling-text marquee-start"
-      ><span>
-        click the '+' icon and fill in the info in the pop-up to add a new book
-        to your collection *** hover over your books to view info *** click the
-        'x' to remove a book from your collection ***
-      </span>
-    <p class="scrolling-text marquee"
-      ><span>
-        click the '+' icon and fill in the info in the pop-up to add a new book
-        to your collection *** hover over your books to view info *** click the
-        'x' to remove a book from your collection ***
-      </span>
-    </p>
-    <p class="scrolling-text marquee marquee-delay"
-      ><span>
-        click the '+' icon and fill in the info in the pop-up to add a new book
-        to your collection *** hover over your books to view info *** click the
-        'x' to remove a book from your collection ***
-      </span>
-    </p>
+    <p class="scrolling-text marquee-start"></p
+    ><p class="scrolling-text marquee"></p>
+    <p class="scrolling-text marquee marquee-delay"></p>
     <div class="main"></div>
     <div class="pop-up blur-background not-visible"></div>
     <div class="pop-up pop-up-container not-visible"
